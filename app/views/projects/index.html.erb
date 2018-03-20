@@ -1,0 +1,22 @@
+<h1>Задачи</h1>
+<br>
+<% @projects.each do |project| %>
+	<h2><%= project.title %></h2>
+	<ul style="list-style-type:disc">
+		<% project.todos.each do |todo| %>
+			<li><%= todo.text %></li>
+		<% end %>
+	</ul>
+<% end %>
+<button id = 'new_todo_btn' style="width: 200px; height: 40px">Новая задача</button>
+<%= form_with scope: :todo, local: true, url: {controller: "todos", action: "create"}, id: "new_todo_form" do |form| %>
+	<h2>Новая задача</h2>
+	<%= form.text_field :text %>
+	<p>
+		<%= form.select :project_id, options_for_select(@projects.collect{|p| [p.title, p.id]}) %>
+	</p>
+	<p>
+		<%= link_to 'Отмена', '/', id: "cancel_link" %>
+		<%= link_to 'Ок', '/', id: "submit_link" %>
+	</p>
+<% end %>

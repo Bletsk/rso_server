@@ -13,7 +13,8 @@
 //= require jquery3
 //= require jquery_ujs
 //= require_tree .
-$(document).ready( function(){
+
+/*$(document).ready( function(){
 	$("#new_todo_btn").click(function(){
 		$("#new_todo_btn").hide();
 		$("#new_todo_form").show();
@@ -28,4 +29,4 @@ $(document).ready( function(){
 		event.preventDefault();
 		$('#new_todo_form').submit();
 	});
-});
+});*/

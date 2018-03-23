@@ -15,18 +15,31 @@
 //= require_tree .
 
 $(document).ready( function(){
+	$('input').iCheck({
+		checkboxClass: 'icheckbox_square-blue',
+		radioClass: 'iradio_square-blue'
+	});
+
+	$('.select2-selection').select2({
+		minimumResultsForSearch: -1,
+		placeholder: "Категория"
+	});
+
 	$("#new_todo_btn").click(function(){
-		$("#new_todo_btn").hide();
-		$("#new_todo_form").show();
+		$('#black_screen').css("display", "flex");
 	});
 
 	$(document).on('click', "#cancel_link", function(){
-		$("#new_todo_form").hide();
-		$('#new_todo_btn').show();
+		event.preventDefault();
+		$('#black_screen').css("display", "none");
 	});
 
 	$(document).on('click', '#submit_link', function(){
 		event.preventDefault();
 		$('#new_todo_form').submit();
+	});
+
+	$('.icheckbox_square-blue').on('ifChanged', function(){
+		$(this).parent().parent().submit();
 	});
 });

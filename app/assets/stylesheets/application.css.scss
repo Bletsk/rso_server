@@ -1,0 +1,192 @@
+/*
+	* This is a manifest file that'll be compiled into application.css, which will include all the files
+	* listed below.
+	*
+	* Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+	* or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+	*
+	* You're free to add application-wide styles to this file and they'll appear at the bottom of the
+	* compiled file so the styles you add here take precedence over styles defined in any styles
+	* defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+	* file per style scope.
+	*
+	*= require_tree .
+	*= require_self
+*/
+
+$primary-color: #55acee;
+$font-color-white: #fff;
+$font-color-black: #000;
+
+@font-face {
+	font-family: 'OpenSans-Regular';
+	src:font-url('OpenSans-Regular.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'OpenSans-Light';
+	src:font-url('OpenSans-Light.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'OpenSans-Semibold';
+	src:font-url('OpenSans-Semibold.ttf') format('truetype');
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	ms-overflow-style: none;
+	overflow: -moz-scrollbars-none;
+	overflow-x: hidden;
+}
+
+body::-webkit-scrollbar {
+	width: 0;
+}
+
+header {
+	background-color: $primary-color;
+	font-family: 'OpenSans-Regular';
+	font-size: 24px;
+	line-height: 24px;
+	padding: 26px;
+	margin: auto;
+	color: $font-color-white;
+	text-align: center;
+}
+
+#new_todo_btn {
+	position: absolute;
+	font-family: 'OpenSans-Regular';
+	top: 8px;
+	right: 8px;
+	background-color: rgba(0,0,0,0);
+	width: 60px;
+	height: 60px;
+	color: white;
+	font-size: 36px;
+	line-height: 24px;
+	border: 2px solid $primary-color;
+	border-radius: 5px;
+	-webkit-transition: border-color 0.25s ease-out;
+}
+
+#new_todo_btn:hover {
+	cursor: pointer;
+	border: 2px solid $font-color-white;
+}
+
+.project-card-wrap {
+	padding: 40px 20px;
+}
+
+.project-card {
+	border: 1px solid rgba(0,0,0,0.1);
+	box-shadow: 1px 1px rgba(0,0,0,0.2), -1px 1px rgba(0,0,0,0.2);
+	font-family: 'OpenSans-Light';
+}
+
+.project-card-title {
+	padding: 10px 20px;
+	text-transform: uppercase;
+	border-bottom: 1px solid rgba(0,0,0,0.1);
+	font-family: 'OpenSans-Semibold';
+	font-size: 12px;
+}
+
+ul {
+	list-style-type: none;
+}
+
+li {
+	padding: 15px 25px;
+}
+
+label {
+	cursor: pointer;
+}
+
+.todo-text {
+	display: inline;
+	margin-left: 25px;
+}
+
+#black_screen {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.7);
+	display: none;
+	justify-content: center;
+	align-items: center;
+}
+
+#new_todo_form {
+	width: 400px;
+	max-width: 90%;
+	background-color: #fff;
+	/*padding: 14px;*/
+
+	h5 {
+		text-align: center;
+		border-bottom: 1px solid rgba(0,0,0,0.1);
+		padding: 12px;
+	}
+}
+
+#new_todo_form_innerbox {
+	padding: 15px;
+
+	p {
+		margin-top: 15px;
+	}
+}
+
+.new_todo_form_text {
+	width: 100%;
+	padding: 8px;
+}	
+
+.select2-container {
+	width: 100% !important;
+}
+
+.select2-selection, .select2-selection__rendered, .select2-selection__arrow {
+   	height: 40px !important;
+   	span {
+       	line-height: 40px !important;
+       	text-align: left;
+   	}
+}
+
+.select2-selection {
+   border-radius: 0 !important;
+}
+
+#cancel_link {
+	font-size: 12px;
+	float: left;
+	line-height: 100%;
+	padding: 14px 64px;
+	margin-bottom: 15px;
+	background-color: rgba(0,0,0,0.3);
+	color: #fff;
+	text-decoration: none;
+}
+
+#submit_link {
+	font-size: 12px;
+	float: right;
+	line-height: 100%;
+	padding: 14px 80px;
+	margin-bottom: 15px;
+	background-color: $primary-color;
+	color: #fff;
+	text-decoration: none;
+}

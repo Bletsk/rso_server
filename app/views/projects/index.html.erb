@@ -1,22 +1,45 @@
-<h1>Задачи</h1>
-<br>
-<% @projects.each do |project| %>
-	<h2><%= project.title %></h2>
-	<ul style="list-style-type:disc">
-		<% project.todos.each do |todo| %>
-			<li><%= todo.text %></li>
-		<% end %>
-	</ul>
-<% end %>
-<button id = 'new_todo_btn' style="width: 200px; height: 40px">Новая задача</button>
-<%= form_with scope: :todo, local: true, url: {controller: "todos", action: "create"}, id: "new_todo_form" do |form| %>
-	<h2>Новая задача</h2>
-	<%= form.text_field :text %>
-	<p>
-		<%= form.select :project_id, options_for_select(@projects.collect{|p| [p.title, p.id]}) %>
-	</p>
-	<p>
-		<%= link_to 'Отмена', '/', id: "cancel_link" %>
-		<%= link_to 'Ок', '/', id: "submit_link" %>
-	</p>
-<% end %>
+<header>Задачи<button id = 'new_todo_btn'>+</button></header>
+<div class = 'container'>
+	<% @projects.each do |project| %>
+		<div class = 'project-card-wrap col-lg-4 col-md-6'>
+			<div class = 'project-card'>
+				<div class = 'project-card-title'><%= project.title %></div>
+				<ul>
+					<% project.todos.each do |todo| %>
+						<li>
+							<%= form_with scope: :todo, local: true, url: { controller: "todos", action: "update", id: todo.id}, method: 'put', class: "checkbox_form" do |form| %>
+								<label>
+									<% if todo.isCompleted %>
+										<input type = 'checkbox' checked>
+										<del class = 'todo-text'><%= todo.text %></del>
+									<% else %>
+										<input type = 'checkbox'>
+										<div class = 'todo-text'><%= todo.text %></div>
+									<% end %>
+								</label>
+							<% end %>
+						</li>
+					<% end %>
+				</ul>
+			</div>
+		</div>
+	<% end %>
+</div>
+<div id = 'black_screen'>
+	<%= form_with scope: :todo, local: true, url: {controller: "todos", action: "create"}, id: "new_todo_form" do |form| %>
+		<h5>НОВАЯ ЗАДАЧА</h5>
+		<div id = 'new_todo_form_innerbox'>
+			<%= form.text_field :text, placeholder: "Название задачи...", class: "new_todo_form_text" %>
+			<p>
+				<%= form.select :project_id, options_for_select(@projects.collect{|p| [p.title, p.id]}), {}, { :class => 'select2-selection' } %>
+			</p>
+			<p>
+				<%= link_to 'ОТМЕНА', '/', id: "cancel_link" %>
+				<%= link_to 'ОК', '/', id: "submit_link" %>
+			</p>
+		</div>
+	<% end %>
+</div>
+	
+	
+
